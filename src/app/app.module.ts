@@ -18,11 +18,13 @@ import { LoginButtonModule } from './login-button/login-button.module';
     HomePageModule,
     LoginButtonModule,
     ProvideAuth0.AuthModule.forRoot({
-      domain: 'Yhttp://localhost:3000',
-      clientId: 'gS3C20Vt9iT7qy2yprLHjw7SuK8IDWjQ',
+      domain: 'dev-q7rj5o44.us.auth0.com',
+      clientId: 'BmCXzhkVGyzU9SH2n6EpqRQSBVabiPth',
       authorizationParams: {
         redirect_uri: window.location.origin,
+        audience: "https://dev-q7rj5o44.us.auth0.com/api/v2/"
       },
+      errorPath: "/error"
     })
   ],
   providers: [],
