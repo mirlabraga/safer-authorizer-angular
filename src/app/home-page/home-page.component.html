@@ -1,1 +1,11 @@
-<p>home-page works!</p>
+
+
+<li class="nav-item" *ngIf="(auth.isAuthenticated$ | async) === false">
+  <button
+    id="qsLoginBtn"
+    class="btn btn-primary btn-margin"
+    (click)="loginWithRedirect()"
+  >
+  <p>home-page works!</p>
+  </button>
+</li>
