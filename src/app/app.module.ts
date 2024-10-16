@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import * as ProvideAuth0 from "@auth0/auth0-angular";
 
-import { HomePageModule } from './home-page/home-page.module';
 import { LoginButtonModule } from './login-button/login-button.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,8 +15,8 @@ import { LoginButtonModule } from './login-button/login-button.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomePageModule,
     LoginButtonModule,
+    FooterComponent,
     ProvideAuth0.AuthModule.forRoot({
       domain: 'dev-q7rj5o44.us.auth0.com',
       clientId: 'BmCXzhkVGyzU9SH2n6EpqRQSBVabiPth',

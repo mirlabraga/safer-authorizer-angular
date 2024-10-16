@@ -18,6 +18,7 @@
       <div
         class="collapse navbar-collapse"
         id="navbarNav"
+        [ngbCollapse]="isCollapsed"
       >
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
@@ -42,14 +43,14 @@
           <!-- Login button: show if NOT authenticated -->
           <li
             class="nav-item"
-            *ngIf="(auth.isAuthenticated$)"
+            *ngIf="(auth.isAuthenticated$ | async) === false"
           >
             <button
               id="qsLoginBtn"
               class="btn btn-primary btn-margin"
               (click)="loginWithRedirect()"
             >
-              Log inM
+              Log in
             </button>
           </li>
           <!-- / Login button -->
@@ -81,11 +82,13 @@
                 {{ user.name }}
               </div>
               <a routerLink="/profile" class="dropdown-item dropdown-profile">
+                <fa-icon [icon]="faUser" class="mr-3"></fa-icon> Profile
               </a>
               <button
                 (click)="logout()"
                 class="btn btn-link dropdown-item"
               >
+                <fa-icon [icon]="faPowerOff" class="mr-3"></fa-icon> Log out
               </button>
             </div>
           </li>
@@ -101,9 +104,8 @@
             class="btn btn-primary btn-block"
             id="qsLoginBtn"
             (click)="loginWithRedirect()"
-            *ngIf="!(auth.isAuthenticated$)"
           >
-            Log inM
+            Log in
           </button>
 
         </ul>
@@ -127,6 +129,20 @@
               <!-- Show the user's full name from the id token here -->
               <h6 class="d-inline-block">{{ user.name }}</h6>
             </span>
+          </li>
+          <li>
+            <fa-icon [icon]="faUser" class="mr-3"></fa-icon>
+            <a routerLink="/profile">Profile</a>
+          </li>
+
+          <li>
+            <fa-icon [icon]="faPowerOff" class="mr-3"></fa-icon>
+            <button
+              class="btn btn-link p-0"
+              (click)="logout()"
+            >
+              Log out
+            </button>
           </li>
         </ul>
       </div>
